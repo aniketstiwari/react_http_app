@@ -17,7 +17,7 @@ class Blog extends Component {
         // in a variable as it is not going to complete immediately
 
         //then() function will execute when the get request will be completed
-        axios.get('https://jsonplaceholder.typicode.com/posts')
+        axios.get('/posts')
         .then(response => {
             const posts = response.data.slice(0, 4);
             const updatedPosts = posts.map( post => {
