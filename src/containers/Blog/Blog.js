@@ -7,6 +7,9 @@ import NewPost from '../../components/NewPost/NewPost';
 import './Blog.css';
 
 class Blog extends Component {
+    state = {
+        posts: []
+    }
     componentDidMount() {
         //the below "get" line we be executed asynchronously that's why we can't save
         // in a variable as it is not going to complete immediately
@@ -14,17 +17,21 @@ class Blog extends Component {
         //then() function will execute when the get request will be completed
         axios.get('https://jsonplaceholder.typicode.com/posts').then(response => {
             console.log(response);
+            this.setState({ posts: response.data });
         });
+        //calling setState() outside of the get function will not set the state
+        // because we won't get the whole response as get is a Async request
 
     }
 
     render () {
+        const posts = this.state.posts.map( (post) => {
+            return <Post key={post.id} title={post.title} />
+        })
         return (
             <div>
                 <section className="Posts">
-                    <Post />
-                    <Post />
-                    <Post />
+                    {posts}
                 </section>
                 <section>
                     <FullPost />
