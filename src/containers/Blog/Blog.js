@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+//import axios from 'axios';
+import axiosinstance from '../../axios';
 
 import Post from '../../components/Post/Post';
 import FullPost from '../../components/FullPost/FullPost';
@@ -17,7 +18,7 @@ class Blog extends Component {
         // in a variable as it is not going to complete immediately
 
         //then() function will execute when the get request will be completed
-        axios.get('/posts')
+        axiosinstance.get('/posts')
         .then(response => {
             const posts = response.data.slice(0, 4);
             const updatedPosts = posts.map( post => {
