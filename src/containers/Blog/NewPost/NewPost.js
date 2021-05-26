@@ -10,6 +10,11 @@ class NewPost extends Component {
         author: 'Max'
     }
 
+    componentDidMount() {
+        //whenever we add Link route it will pass additional props
+        console.log(this.props);
+    }
+
     postDataHandler = () => {
         const data = {
             title: this.state.title,

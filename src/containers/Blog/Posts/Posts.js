@@ -9,6 +9,9 @@ class Posts extends Component {
     }
 
     componentDidMount() {
+        //whenever we add Link route it will pass additional props
+        console.log(this.props);
+
         //the below "get" line we be executed asynchronously that's why we can't save
         // in a variable as it is not going to complete immediately
 
