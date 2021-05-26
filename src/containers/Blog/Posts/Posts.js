@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axiosinstance from '../../../axios';
 import Post from '../../../components/Post/Post';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import './Posts.css';
 
 class Posts extends Component {
@@ -39,7 +39,10 @@ class Posts extends Component {
     }
 
     postSelectedHandler = (id) => {
-        this.setState({selectedPostId: id})
+        //this.setState({selectedPostId: id})
+
+        //when we want to navigate after http request is finish
+        this.props.history.push({pathname: '/' + id});
     }
 
     render() {
@@ -48,12 +51,13 @@ class Posts extends Component {
             posts = this.state.posts.map( (post) => {
                 {/* <Link to={'/posts/' + post.id} key={post.id}> */}
                 return (
-                  <Link to={'/' + post.id} key={post.id}> 
-                    <Post  
+                  //<Link to={'/' + post.id} key={post.id}> 
+                    <Post
+                    key={post.id}
                     title={post.title} 
                     author={post.author}
                     clicked={() => this.postSelectedHandler(post.id)} />
-                  </Link>
+                  //</Link>
                 )
             });
         }
