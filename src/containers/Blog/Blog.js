@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 //import axios from 'axios';
 // import axiosinstance from '../../axios';
-import { Route, Link } from 'react-router-dom';
+
+// If we want to add active class to our link we need to replace Link with NavLink
+import { Route, NavLink } from 'react-router-dom';
 
 import './Blog.css';
 import Posts from './Posts/Posts';
@@ -17,7 +19,14 @@ class Blog extends Component {
                             {/** Link will create an anchor tag and will prevent the
                              * default behvaiour of sending a new request
                              */}
-                            <li><Link to="/">Home</Link></li>
+                            <li><NavLink 
+                               to="/" 
+                               exact
+                               activeClassName="my-active"
+                               activeStyle={{
+                                   color: '#fa923f',
+                                   textDecoration: 'underline'
+                               }}>Home</NavLink></li>
                             {/** hash: property will allow us to then jump to any
                              * id element we specified
                              */}
@@ -28,11 +37,11 @@ class Blog extends Component {
                               * path. If you want to change it to relative path with
                               * the help of this.props.match.url 
                               * pathname: this.props.match.url + "new-post" */}
-                            <li><Link to={{
+                            <li><NavLink to={{
                                 pathname: "/new-post",
                                 hash: '#submit',
                                 search: '?quick-submit=true' 
-                            }}>New Post</Link></li>
+                            }}>New Post</NavLink></li>
                         </ul>
                     </nav>
                 </header>
