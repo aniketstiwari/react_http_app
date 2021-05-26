@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 
 import './Blog.css';
+import Posts from './Posts/Posts';
 
 class Blog extends Component {
     render () {
@@ -23,9 +24,11 @@ class Blog extends Component {
                  {/** Right it match the prefix from the path that's why we see
                   * <h1>Home</h1> in both the url. We can override this behavior by using
                   * exact prop. exact prop is a boolean prop */}
-                <Route path="/" exact render={ () => <h1>Home</h1> } />
+                {/* <Route path="/" exact render={ () => <h1>Home</h1> } /> */}
                 {/** We can use as many routes on the same page */}
-                <Route path="/" exact render={ () => <h1>Home 2</h1> } />
+                {/* <Route path="/" exact render={ () => <h1>Home 2</h1> } /> */}
+
+                <Route path="/" exact component={Posts} />
             </div>
         );
     }
