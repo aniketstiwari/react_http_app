@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // import axiosinstance from '../../axios';
 
 // If we want to add active class to our link we need to replace Link with NavLink
-import { Route, NavLink } from 'react-router-dom';
+import { Route, NavLink, Switch } from 'react-router-dom';
 
 import './Blog.css';
 import Posts from './Posts/Posts';
@@ -61,10 +61,19 @@ class Blog extends Component {
                  * state. Instead we need to render the components whenever user clicks
                  * on any link
                  */}
-                <Route path="/" exact component={Posts} />
-                <Route path="/new-post" component={NewPost} />
+                 <Switch>
+                   <Route path="/" exact component={Posts} />
+                   <Route path="/new-post" component={NewPost} />
+                   <Route path="/:id" exact component={FullPost} />
+                 </Switch>
                 {/** Position of route is important as it parses from top to bottom */}
-                <Route path="/:id" exact component={FullPost} />
+                {/** THe id post was getting render in new post path because :id part
+                 * here will also interpret new-post. Inorder to solve this issue by
+                 * adding a prefix in :id. The other way to solve this problem is
+                 * to make use of Switch route. Which tell the router to match the
+                 * first prefix
+                 */}
+                {/* <Route path="/posts/:id" exact component={FullPost} /> */}
             </div>
         );
     }
