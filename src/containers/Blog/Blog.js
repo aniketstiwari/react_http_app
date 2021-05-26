@@ -21,6 +21,13 @@ class Blog extends Component {
                             {/** hash: property will allow us to then jump to any
                              * id element we specified
                              */}
+                            {/** Absolute path is always appended to your domain
+                              *  Let's say we have a website example.com. Then when
+                              * we navigate to new-post it will append to the
+                              * base URL. In React it is always treated as absolute
+                              * path. If you want to change it to relative path with
+                              * the help of this.props.match.url 
+                              * pathname: this.props.match.url + "new-post" */}
                             <li><Link to={{
                                 pathname: "/new-post",
                                 hash: '#submit',
