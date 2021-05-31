@@ -20,6 +20,16 @@ class Blog extends Component {
                             {/** Link will create an anchor tag and will prevent the
                              * default behvaiour of sending a new request
                              */}
+                             {/** Now first change the lable from Home to Posts. WHen
+                              * we go to Posts page the posts link is highlighted but 
+                              * when we go to single post page the posts link is not
+                              * highlighted. The reason is because we are doing exact
+                              * match on the Navlink. Path we are match is "/" but in single
+                              * post path it will be localhost:3000/some_id that's
+                              * why it doesn't match
+                              * Now if we remove exact then New Post
+                              * will get highlighted. So, this edge case we can ignore
+                              */}
                             <li><NavLink 
                                to="/" 
                                exact
@@ -27,7 +37,7 @@ class Blog extends Component {
                                activeStyle={{
                                    color: '#fa923f',
                                    textDecoration: 'underline'
-                               }}>Home</NavLink></li>
+                               }}>Posts</NavLink></li>
                             {/** hash: property will allow us to then jump to any
                              * id element we specified
                              */}
