@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // import axiosinstance from '../../axios';
 
 // If we want to add active class to our link we need to replace Link with NavLink
-import { Route, NavLink, Switch } from 'react-router-dom';
+import { Route, NavLink, Switch, Redirect } from 'react-router-dom';
 
 import './Blog.css';
 import Posts from './Posts/Posts';
@@ -74,6 +74,11 @@ class Blog extends Component {
                    <Route path="/new-post" component={NewPost} />
                    {/* <Route path="/" component={Posts} /> */}
                    <Route path="/posts" component={Posts} />
+                   {/** If we use outside the "Switch" route then 
+                    * "from" cannot be specified. Only "to" will be available
+                    * outside "Switch" */}
+                   <Redirect from="/" to="/posts" />
+                   {/* <Route path="/" component={Posts} /> */}
                  </Switch>
                 {/** Position of route is important as it parses from top to bottom */}
                 {/** THe id post was getting render in new post path because :id part
