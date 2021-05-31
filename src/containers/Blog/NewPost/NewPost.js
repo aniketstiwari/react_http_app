@@ -15,6 +15,9 @@ class NewPost extends Component {
     componentDidMount() {
         //whenever we add Link route it will pass additional props
         console.log(this.props);
+
+        //if user is unauthenticated then
+        // this.props.history.replace('/posts')
     }
 
     postDataHandler = () => {

@@ -10,6 +10,10 @@ import Posts from './Posts/Posts';
 import NewPost from './NewPost/NewPost';
 
 class Blog extends Component {
+    state = {
+        auth: false
+    }
+
     render () {
         return (
             <div className="Blog">
@@ -71,7 +75,7 @@ class Blog extends Component {
                  * on any link
                  */}
                  <Switch>
-                   <Route path="/new-post" component={NewPost} />
+                   { this.state.auth ? <Route path="/new-post" component={NewPost} /> : null }
                    {/* <Route path="/" component={Posts} /> */}
                    <Route path="/posts" component={Posts} />
                    {/** If we use outside the "Switch" route then 
@@ -92,5 +96,8 @@ class Blog extends Component {
         );
     }
 }
+
+//Guard is used when you don't know whether the user is authenticated or not. Or some
+//parts in your application which you only want to allow users to visit if he is authenticated
 
 export default Blog;
