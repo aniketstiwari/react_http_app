@@ -81,8 +81,13 @@ class Blog extends Component {
                    {/** If we use outside the "Switch" route then 
                     * "from" cannot be specified. Only "to" will be available
                     * outside "Switch" */}
-                   <Redirect from="/" to="/posts" />
+                   {/* <Redirect from="/" to="/posts" /> */}
                    {/* <Route path="/" component={Posts} /> */}
+
+                   {/**How to handle 404. Once way is using "Redirect". The other way 
+                    * using Route by not specififying "path"
+                    */}
+                    <Route render={() => <h1>Not Found</h1>} />
                  </Switch>
                 {/** Position of route is important as it parses from top to bottom */}
                 {/** THe id post was getting render in new post path because :id part
