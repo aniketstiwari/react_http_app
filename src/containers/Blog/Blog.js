@@ -8,7 +8,6 @@ import { Route, NavLink, Switch } from 'react-router-dom';
 import './Blog.css';
 import Posts from './Posts/Posts';
 import NewPost from './NewPost/NewPost';
-import FullPost from './FullPost/FullPost';
 
 class Blog extends Component {
     render () {
@@ -31,7 +30,7 @@ class Blog extends Component {
                               * will get highlighted. So, this edge case we can ignore
                               */}
                             <li><NavLink 
-                               to="/" 
+                               to="/posts/" 
                                exact
                                activeClassName="my-active"
                                activeStyle={{
@@ -72,9 +71,9 @@ class Blog extends Component {
                  * on any link
                  */}
                  <Switch>
-                   <Route path="/" exact component={Posts} />
                    <Route path="/new-post" component={NewPost} />
-                   <Route path="/:id" exact component={FullPost} />
+                   {/* <Route path="/" component={Posts} /> */}
+                   <Route path="/posts" component={Posts} />
                  </Switch>
                 {/** Position of route is important as it parses from top to bottom */}
                 {/** THe id post was getting render in new post path because :id part
